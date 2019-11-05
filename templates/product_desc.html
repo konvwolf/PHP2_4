@@ -1,0 +1,49 @@
+<!-- Страница с подробным описанием товара -->
+<section class="product_description">
+    {% if productHURL %}
+        <a href="/">На главную</a>
+        <div class="product_images">
+            {% for picture in product %}
+                    <img src="/public/img/{{ picture.file_name }}" alt="{{ picture.image_name }}"
+                        onmouseover="this.style='transform: scale(1.1);'"
+                        onmouseout="this.style='transform: scale(1)'">
+            {% endfor %}
+        </div>
+        <div class="full_description" data-id="<?= $description[0]['id'] ?>">
+            <h2 class="product_brand">{{ productBrand }}</h1>
+            <h2 class="product_name">{{ productName }}</h2>
+            <ul class="product_characteristics">
+                {% for key, charcs in description %}
+                    <li>
+                        <b>{{ key }}</b>: {{ charcs }}
+                    </li>
+                {% endfor %}
+            </ul>
+            <i class="fas fa-ruble-sign"></i> <span class="product_price product_descr_price">{{ productPrice }}</span>
+            <a class="to_cart"><i class="fas fa-shopping-basket"></i></a>
+        </div>
+            {% for comment in comments %}
+                    <div class="user_comment">
+                        <div class="comment_date">{{ comment.comment_time }}</div>
+                        <div class="user_name">{{ comment.user_name }}</div>
+                        <div class="comment_text">{{ comment.user_comment }}</div>
+                    </div>
+            {% endfor %}
+            {% if logged == true %}
+                <form method="post" action="/comment/" class="comments_form">
+                    <input type="hidden" name="name" class="name" value="{{ userLogin }}">
+                    <input type="hidden" name="prod_name" class="prod_name" value="{{ productHURL }}">
+                    <textarea name="comm" class="comment" placeholder="Напишите комментарий"></textarea>
+                    <button type="submit" class="comments_button">Отправить</button>
+                </form>
+            {% endif %}
+    {% else %}
+        <ul class="prod_list_cover">
+            <li><a href="/">На главную</a></li>
+            <h1 class="prod_h1_cover">Вот, что у нас есть:</h1>
+            {% for product in whatWeHave %}
+                <li><a href="/product/{{ product.prod_hurl }}/">{{ product.prod_name }}</a></li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</section>

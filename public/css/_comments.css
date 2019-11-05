@@ -1,0 +1,46 @@
+.user_comment {
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 5px;
+}
+
+.comment_date {
+    width: 15%;
+    font-style: italic;
+}
+
+.user_name {
+    width: 15%;
+    font-weight: 600;
+}
+
+.comment_text {
+    width: 70%;
+}
+
+.comments_form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.comment {
+    width: 80%;
+    font-size: 1em;
+    font-family: Arial, Helvetica, sans-serif;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.comments_button {
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 10px;
+    width: 15%;
+    font-size: 1.1em;
+    font-weight: 600;
+}

@@ -1,0 +1,61 @@
+<!-- Страница пользователя. Отображает историю его заказов -->
+<section class="user_cabinet">
+    {% if logged == true %}
+        <h2>
+            Добро пожаловать в личный кабинет, {{ userName }}!
+        </h2>
+
+        <p>
+            Ваш номер в системе — {{ userId }}, вы вошли с логином "{{ userLogin }}"
+        </p>
+
+        {% if ifBought %}
+            <p>Раньше вы покупали</p>
+            <table class="shopping_list">
+                <tr>
+                    <th>
+                        Дата покупки
+                    </th>
+                    <th>
+                        Название товара
+                    </th>
+                    <th>
+                        Цена
+                    </th>
+                    <th>
+                        Количество
+                    </th>
+                    <th>
+                        Общая стоимость
+                    </th>
+                </tr>
+                {% for goods in boughtList %}
+                    <tr>
+                        <td>
+                            {{ goods.shopping_date }}
+                        </td>
+                        <td>
+                            {{ goods.prod_name }}
+                        </td>
+                        <td>
+                            {{ goods.prod_price }}
+                        </td>
+                        <td>
+                            {{ goods.quantity }}
+                        </td>
+                        <td>
+                            {{ goods.prod_price * goods.quantity }}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        {% endif %}
+
+        <form action="/logout/" method="post">
+            <input type="hidden" name="logout" value="true">
+            <button type="submit" class="logout">Выйти из системы</button>
+        </form>
+    {% else %}
+        <h2>Вы не авторизованы!</h2>
+    {% endif %}
+</section>

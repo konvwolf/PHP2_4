@@ -1,0 +1,25 @@
+<!-- Полный список товаров сайта -->
+<section>
+    <div class="pages">
+        {% for page in pages %}
+            <a href="/?page={{ page }}">-{{ page }}-</a>
+        {% endfor %}
+    </div>
+    <div class="products_list">
+        {% for product in productsList %}
+            <div class="product_card" data-id="{{ product.id }}">
+                <a href="/product/{{ product.prod_hurl }}/" class="product_link">
+                    <img src="/public/img/{{ product.file_name }}" alt="{{ product.image_name }}">
+                    <h2 class="product_name">{{ product.prod_name }}</h2>
+                    <i class="fas fa-ruble-sign"></i> <span class="product_price">{{ product.prod_price }}</span>
+                    <a class="to_cart"><i class="fas fa-shopping-basket"></i></a>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="pages">
+        {% for page in pages %}
+            <a href="/?page={{ page }}">-{{ page }}-</a>
+        {% endfor %}
+    </div>
+</section>
