@@ -2,14 +2,13 @@
 include ('config/const.php');
 include (ENGINE_PATH.'func.php');
 include (ENGINE_PATH.'pdo.php');
-require_once SITE_ROOT.'vendor'.DIRECTORY_SEPARATOR.'autoload.php'; // автолоадер Composer, Symphony и Twig
+require_once SITE_ROOT.'engine'.DIRECTORY_SEPARATOR.'vendor'.DIRECTORY_SEPARATOR.'autoload.php'; // автолоадер Composer, Symphony и Twig
 session_start();
 
 try {
     $loader = new \Twig\Loader\FilesystemLoader (TEMPLATES_PATH);
     $twig = new \Twig\Environment ($loader, [
-        'cache' => CACHE_PATH,
-        'auto_reload' => true
+        'cache' => CACHE_PATH
     ]);
 } catch (Exception $error) {
     die('Error: ' . $error->getMessage());

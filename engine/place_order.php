@@ -7,7 +7,7 @@ include ($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'config'.DIRECTORY_SEPARA
 include (ENGINE_PATH.'func.php'); // функции сайта
 include (ENGINE_PATH.'pdo.php'); // PDO
 
-if (isset($_POST['cartContents'])) { // Получаем содержимое картины в виде JSON-строки
+if (isset($_POST['cartContents'])) { // Получаем содержимое корзины в виде JSON-строки
     $postArr = (array) json_decode($_POST['cartContents']); // Разбираем JSON-строку на массив объектов
     foreach ($postArr as $place) { // Перебираем массив
         $id = $place->id; // Идентификатор товара из объекта
