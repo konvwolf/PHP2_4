@@ -8,10 +8,7 @@ if (!empty($productHURL)) { // Человекопонятный URL не дол�
         FROM ' . PRODUCTS . ' prod '.
         'JOIN ' . PHOTOS . ' phot ON prod.id = phot.prod_id AND prod.prod_hurl = '.'\''.$productHURL.'\'');
     
-    $description = []; // массив с данными о товаре
-    while ($row = $query -> fetch(PDO::FETCH_ASSOC)) {
-        array_push ($description, $row);
-    }
+    $description = $query -> fetchall (PDO::FETCH_ASSOC);
 
     /* Подробная информация о товаре, хранящаяся в колонке prod_desc в таблице products_desc.
     Информация хранится в виде JSON-строки. */

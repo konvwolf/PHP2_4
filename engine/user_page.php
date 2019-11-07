@@ -4,10 +4,7 @@ if (isset($_SESSION['login']) && $_SESSION['logged'] === true){
     . USERS . ' u LEFT JOIN '. CART . ' c ON u.login = c.login LEFT JOIN ' . PRODUCTS . ' p ON c.prod_id = p.id WHERE
     u.login = ' . '\'' . $_SESSION['login'] . '\' ORDER BY c.shopping_date DESC');
 
-    $userData = [];
-    while ($row = $query -> fetch (PDO::FETCH_ASSOC)) {
-        array_push ($userData, $row);
-    }
+    $userData = $query -> fetchall (PDO::FETCH_ASSOC);
 
     $twigArr = array_merge ($twigArr,
         [

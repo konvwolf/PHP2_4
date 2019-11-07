@@ -13,10 +13,7 @@ for ($i = 1; $i <= $pages; $i++) {
     array_push($pageNum, $i);
 }
 
-$list = [];
-while ($row = $query -> fetch (PDO::FETCH_ASSOC)) {
-    array_push ($list, $row);
-}
+$list = $query -> fetchall (PDO::FETCH_ASSOC);
 
 $twigArr = array_merge ($twigArr,
     [
